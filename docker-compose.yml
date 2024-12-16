@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  ml_project:
+    image: pytorch/pytorch:2.2.1-cuda12.1-cudnn8-runtime
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ${CONTAINER_NAME}
+    volumes:
+      - .:/app
+    working_dir: /app
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+
