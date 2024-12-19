@@ -9,6 +9,7 @@ services:
     container_name: ${CONTAINER_NAME}
     volumes:
       - .:/app
+      - ${DATASET_PATH}:/app/data
     working_dir: /app
     stdin_open: true
     tty: true
