@@ -8,6 +8,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     git \
     wget \
+    libsndfile1 \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Pythonのアップデート
@@ -19,4 +20,3 @@ RUN pip install -r requirements.txt
 
 # デフォルトのCMDを指定
 CMD ["bash"]
-

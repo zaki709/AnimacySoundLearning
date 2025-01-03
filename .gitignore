@@ -6,3 +6,6 @@ output/models/*
 
 # log
 output/logs/*
+
+# pycache
+**/__pycache__/**
