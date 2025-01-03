@@ -1,23 +1,18 @@
-import pandas as pd
-import torch
-from sklearn.model_selection import train_test_split
+from data_preprocessing.dataloader import AudioDataset
+from models.resnet_model import initialize_model
+from models.train import train_model
 from torch.utils.data import DataLoader
-
-from dataloader import ESC50Data
-from train import train
-
-
-def main():
-    meta_df = pd.read_csv("data/meta/esc50.csv")
-    train_df, test_df = train_test_split(meta_df, train_size=0.8)
-
-    train_data = ESC50Data("data/audio/", train_df, "filename", "category")
-    test_data = ESC50Data("data/audio/", test_df, "filename", "category")
-    train_loader = DataLoader(train_data, batch_size=32, shuffle=True)
-    test_loader = DataLoader(test_data, batch_size=32, shuffle=True)
-    model = train(train_loader, test_loader)
-    torch.save(model.state_dict(), "output/resnet_model.pth")
-
+from torchvision import transforms
 
 if __name__ == "__main__":
-    main()
+    transform = transforms.Compose([
+        transforms.Resize((224, 224)),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+    ])
+
+    dataset = AudioDataset(csv_file="data/metadata/dataset_metadata.csv", transform=transform)
+    dataloader = DataLoader(dataset, batch_size=32, shuffle=True)
+
+    model = initialize_model(model_name="resnet34", num_classes=2)
+    train_model(model, dataloader, num_epochs=10, device="cuda" if torch.cuda.is_available() else "cpu")

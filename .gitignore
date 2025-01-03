@@ -2,4 +2,7 @@
 .env
 
 # trained model
-output/*
+output/models/*
+
+# log
+output/logs/*
