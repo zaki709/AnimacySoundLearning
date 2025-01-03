@@ -4,8 +4,7 @@ import librosa
 import librosa.display
 import matplotlib.pyplot as plt
 import numpy as np
-
-# from utils import create_directory
+from utils import create_directory
 
 
 def audio_to_melspectrogram(filepath, output_dir, sr=22050, n_mels=128, fmax=8000):
@@ -28,6 +27,8 @@ if __name__ == "__main__":
     ret = []
     for root, dirs, files in os.walk("data/raw"):
         for file in files:
-            ret.append(os.path.join(root, file))
-            print(root)
+            file_path = os.path.join(root, file)
+            output_dir = root.replace('/raw/','/processed/')
+            create_directory(output_dir)
+            audio_to_melspectrogram(file_path,output_dir)
     print(ret[:10])
