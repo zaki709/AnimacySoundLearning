@@ -1,6 +1,6 @@
-import torch
-from torch.optim import Adam
 from torch.nn import CrossEntropyLoss
+from torch.optim import Adam
+
 
 def train_model(model, dataloader, num_epochs=50, lr=0.001, device="cuda"):
     model = model.to(device)
@@ -26,5 +26,6 @@ def train_model(model, dataloader, num_epochs=50, lr=0.001, device="cuda"):
             correct += (preds == labels).sum().item()
             total += labels.size(0)
 
-        print(f"Epoch {epoch+1}/{num_epochs}, Loss: {running_loss/len(dataloader):.4f}, Accuracy: {correct/total:.4f}")
-
+        print(
+            f"Epoch {epoch+1}/{num_epochs}, Loss: {running_loss/len(dataloader):.4f}, Accuracy: {correct/total:.4f}"
+        )

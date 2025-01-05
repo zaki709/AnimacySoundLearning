@@ -1,0 +1,4 @@
+alias cl='clear'
+alias lc='clear'
+alias ..='cd ..'
+alias cc='cd /app'
