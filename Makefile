@@ -1,8 +1,17 @@
 include .env
 
+.PHONY: exec
+shell:
+	docker exec -it &{CONTAINER_NAME} $(CMD)
+
 .PHONY: shell
 shell:
-	docker exec -it ${CONTAINER_NAME} /bin/bash
+	make exec CMD="/bin/bash"
+
+.PHONY: run
+shell:
+	make exec CMD="python src/main.py"
+
 
 .PHONY: check-env
 check-env:
