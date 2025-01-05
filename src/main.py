@@ -25,7 +25,7 @@ if __name__ == "__main__":
     train_model(
         model,
         dataloader,
-        num_epochs=50,
+        num_epochs=20,
         device="cuda" if torch.cuda.is_available() else "cpu",
     )
     send_email("train is done")
