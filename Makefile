@@ -1,15 +1,15 @@
 include .env
 
 .PHONY: exec
-shell:
-	docker exec -it &{CONTAINER_NAME} $(CMD)
+exec:
+	docker exec -it ${CONTAINER_NAME} $(CMD)
 
 .PHONY: shell
 shell:
 	make exec CMD="/bin/bash"
 
 .PHONY: run
-shell:
+run:
 	make exec CMD="python src/main.py"
 
 
