@@ -5,6 +5,7 @@ from torchvision import transforms
 from data_preprocessing.dataloader import AnimacyDataset
 from models.resnet_model import initialize_model
 from models.train import train_model
+from notification.notify import send_email
 
 if __name__ == "__main__":
     transform = transforms.Compose(
@@ -27,3 +28,4 @@ if __name__ == "__main__":
         num_epochs=50,
         device="cuda" if torch.cuda.is_available() else "cpu",
     )
+    send_email("train is done")
