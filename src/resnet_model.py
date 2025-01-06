@@ -1,4 +1,3 @@
-import torch
 import torch.nn as nn
 from torchvision.models import resnet34
 
@@ -14,4 +13,3 @@ class AudioClassifier(nn.Module):
 
     def forward(self, x):
         return self.resnet(x)
-
