@@ -19,7 +19,7 @@ CSV_FILE = "data/metadata/dataset_metadata.csv"
 PATIENCE = 5
 t_delta = datetime.timedelta(hours=9)
 JST = datetime.timezone(t_delta, "JST")
-
+TRAIN_ID = (datetime.datetime.now(JST)).strftime("%Y%m%d%H%M%S")
 
 # Prepare DataLoader
 train_loader, val_loader = get_dataloader(CSV_FILE, batch_size=BATCH_SIZE)
@@ -35,7 +35,16 @@ best_val_loss = np.inf
 best_model_path = "output/models"
 
 # Logger
-logger = Logger()
+logger = Logger(TRAIN_ID)
+params = {
+    "BATCH_SIZE": BATCH_SIZE,
+    "EPOCHS": EPOCHS,
+    "LEARNING_RATE": LEARNING_RATE,
+    "PATIENCE": PATIENCE,
+    "MODEL": model.uname(),
+}
+logger.log_params(prefix="Training Parameters", params=params)
+
 
 # train loop
 for epoch in range(EPOCHS):
@@ -83,7 +92,7 @@ for epoch in range(EPOCHS):
     # Early Stopping
     if val_loss < best_val_loss:
         best_val_loss = val_loss
-        save_path = f"{best_model_path}/best_model_{(datetime.datetime.now(JST)).strftime('%Y%m%d%H%M%S')}.pth"
+        save_path = f"{best_model_path}/best_model_{TRAIN_ID}.pth"
         torch.save(model.state_dict(), save_path)
         val_loss_log = f"Validation loss improved. Model saved to {save_path}."
         print(val_loss_log)
