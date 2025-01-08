@@ -11,5 +11,8 @@ class AudioClassifier(nn.Module):
         )
         self.resnet.fc = nn.Linear(self.resnet.fc.in_features, 2)
 
+    def uname(self):
+        return "resnet34 pretrained=True"
+
     def forward(self, x):
         return self.resnet(x)
