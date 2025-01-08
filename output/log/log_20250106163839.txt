@@ -1,0 +1,27 @@
+Log: 20250106163839
+Epoch 1/20, Loss: 60.9846, Accuracy: 0.7649
+Epoch 1/20, Validation Loss: 19.3822, Validation Accuracy: 0.7450
+Validation loss improved. Model saved to output/models/best_model_20250106164040.pth.
+Epoch 2/20, Loss: 46.5714, Accuracy: 0.8303
+Epoch 2/20, Validation Loss: 12.7474, Validation Accuracy: 0.8183
+Validation loss improved. Model saved to output/models/best_model_20250106164247.pth.
+Epoch 3/20, Loss: 40.3080, Accuracy: 0.8539
+Epoch 3/20, Validation Loss: 11.6907, Validation Accuracy: 0.8225
+Validation loss improved. Model saved to output/models/best_model_20250106164412.pth.
+Epoch 4/20, Loss: 33.3766, Accuracy: 0.8821
+Epoch 4/20, Validation Loss: 26.4107, Validation Accuracy: 0.7747
+No improvement for 1 epochs.
+Epoch 5/20, Loss: 30.2043, Accuracy: 0.8946
+Epoch 5/20, Validation Loss: 16.6623, Validation Accuracy: 0.8098
+No improvement for 2 epochs.
+Epoch 6/20, Loss: 24.3932, Accuracy: 0.9193
+Epoch 6/20, Validation Loss: 12.3836, Validation Accuracy: 0.8491
+No improvement for 3 epochs.
+Epoch 7/20, Loss: 22.2719, Accuracy: 0.9216
+Epoch 7/20, Validation Loss: 27.4754, Validation Accuracy: 0.7694
+No improvement for 4 epochs.
+Epoch 8/20, Loss: 18.2650, Accuracy: 0.9413
+Epoch 8/20, Validation Loss: 18.5350, Validation Accuracy: 0.8512
+No improvement for 5 epochs.
+Early stopping triggered.
+Training complete.
